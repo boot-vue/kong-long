@@ -26,32 +26,32 @@ export default new Router({
         {
             path: '/upstream',
             name: 'upstream',
-            component: () => import(/* webpackChunkName: "test" */'./views/UpStream')
+            component: () => import(/* webpackChunkName: "upstream" */'./views/UpStream')
         },
         {
             path: '/service',
             name: 'service',
-            component: () => import(/* webpackChunkName: "test" */'./views/Service')
+            component: () => import(/* webpackChunkName: "service" */'./views/Service')
         },
         {
             path: '/route',
             name: 'route',
-            component: () => import(/* webpackChunkName: "test" */'./views/Route')
+            component: () => import(/* webpackChunkName: "route" */'./views/Route')
         },
         {
             path: '/consumer',
             name: 'consumer',
-            component: () => import(/* webpackChunkName: "test" */'./views/Consumer')
+            component: () => import(/* webpackChunkName: "consumer" */'./views/Consumer')
         },
         {
             path: '/plugin',
             name: 'plugin',
-            component: () => import(/* webpackChunkName: "test" */'./views/Plugin')
+            component: () => import(/* webpackChunkName: "plugin" */'./views/Plugin')
         },
         {
             path: '/cert',
             name: 'cert',
-            component: () => import(/* webpackChunkName: "test" */'./views/Cert')
+            component: () => import(/* webpackChunkName: "cert" */'./views/Cert')
         },
         {
             path: '*',

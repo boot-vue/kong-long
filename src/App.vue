@@ -10,8 +10,8 @@
                         <h1 v-show="!collapsed" class="text">Kong Long</h1>
                     </div>
                     <a-menu
-                        :defaultOpenKeys="['sub1']"
                         :defaultSelectedKeys="[selectKey]"
+                        :selectedKeys="[selectKey]"
                         :inlineCollapsed="collapsed"
                         class="slide-nav"
                         mode="inline"
@@ -101,7 +101,7 @@ export default {
     data() {
         return {
             collapsed: false,//是否收起
-            selectKey: 'index', // 选中的菜单
+            selectKey: '', // 选中的菜单
             copyright: moment().format('YYYY')
         }
     },
@@ -148,8 +148,10 @@ export default {
             }
         }
     },
-    created() {
-        this.selectKey = this.$route.path.substring(this.$route.path.lastIndexOf("/") + 1)
+    watch: {
+        $route(v) {
+            this.selectKey = v.name
+        }
     }
 }
 </script>

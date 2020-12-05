@@ -1,12 +1,149 @@
 <template>
     <div class="upstream">
-        upstream....
+        <a-button type="primary" icon="plus" @click="showUpStreamModal" style="margin-bottom: 20px">新增UpStream</a-button>
+        <a-table :columns="columns" :data-source="data" rowKey="id">
+            <span slot="tags" slot-scope="tags">
+             <a-tag
+                 v-for="tag in tags"
+                 :key="tag"
+                 color='green'
+             >
+                     {{ tag }}
+             </a-tag>
+            </span>
+            <span slot="created_at" slot-scope="text">{{ moment.unix(text).format('lll') }}</span>
+            <div slot="expandedRowRender" slot-scope="record" style="margin: 0">
+                <a-descriptions title="Details" bordered>
+                    <a-descriptions-item label="id">
+                        {{ record.id }}
+                    </a-descriptions-item>
+                    <a-descriptions-item label="hash_on">
+                        {{ record.hash_on }}
+                    </a-descriptions-item>
+                    <a-descriptions-item label="hash_fallback">
+                        {{ record.hash_fallback }}
+                    </a-descriptions-item>
+                    <a-descriptions-item label="hash_on_header">
+                        {{ record.hash_on_header || 'null' }}
+                    </a-descriptions-item>
+                    <a-descriptions-item label="hash_on_cookie_path">
+                        {{ record.hash_on_cookie_path }}
+                    </a-descriptions-item>
+                    <a-descriptions-item label="hash_on_cookie">
+                        {{ record.hash_on_cookie || 'null' }}
+                    </a-descriptions-item>
+                    <a-descriptions-item label="host_header">
+                        {{ record.host_header || 'null' }}
+                    </a-descriptions-item>
+                    <a-descriptions-item label="slots">
+                        {{ record.slots }}
+                    </a-descriptions-item>
+                    <a-descriptions-item label="hash_fallback_header">
+                        {{ record.hash_fallback_header || 'null' }}
+                    </a-descriptions-item>
+                </a-descriptions>
+            </div>
+            <span slot="action" slot-scope="record">
+                <a-button type="primary" @click="handleEditUpModal(record)">编辑</a-button>
+                <a-divider type="vertical"/>
+                <a-button type="danger" @click="delUpStream(record.id)">删除</a-button>
+                <a-divider type="vertical"/>
+                <a-button>Target</a-button>
+             </span>
+        </a-table>
+        <UpStreamModal :data="params" :show="showModal" :isEdit="isEdit"
+                       @get-data="handleCreateUpStream" @handle-cancel="handleCancel"/>
     </div>
 </template>
 
 <script>
+import UpStreamModal from '../components/UpStreamModal';
+import {deleteUpStream, getUpStreams} from '@/api/upstream'
+import moment from 'moment'
+
+const columns = [
+    {
+        title: "Name",
+        dataIndex: 'name',
+        key: 'name',
+    },
+    {
+        title: "负载均衡策略",
+        dataIndex: 'algorithm',
+        key: 'algorithm',
+    },
+    {
+        title: "Tags",
+        dataIndex: 'tags',
+        key: 'tags',
+        scopedSlots: {customRender: 'tags'}
+    },
+    {
+        title: "创建时间",
+        dataIndex: 'created_at',
+        key: 'created_at',
+        scopedSlots: {customRender: 'created_at'}
+    },
+    {
+        title: 'Action',
+        key: 'action',
+        scopedSlots: {customRender: 'action'},
+    }
+]
 export default {
-    name: "UpStream"
+    name: "UpStream",
+    components: {UpStreamModal},
+    data() {
+        return {
+            showModal: false,
+            data: [],
+            columns,
+            isEdit: false,
+            params: {
+                id: '',
+                name: '',
+                algorithm: 'round-robin',
+                hash_on: 'none',
+                hash_fallback: 'none',
+                hash_on_header: '',
+                hash_fallback_header: '',
+                hash_on_cookie: '',
+                hash_on_cookie_path: '/',
+                slots: 10000,
+                tags: []
+            },
+            moment
+        }
+    },
+    methods: {
+        handleCancel() {
+            this.showModal = false
+        },
+        showUpStreamModal() {
+            this.isEdit = false
+            this.showModal = true
+        },
+        getData() {
+            getUpStreams().then(res => {
+                this.data = res.data
+            })
+        },
+        handleCreateUpStream() {
+            this.getData()
+            this.showModal = false
+        },
+        handleEditUpModal(r) {
+            this.params = r
+            this.isEdit = true
+            this.showModal = true
+        },
+        delUpStream(id) {
+            deleteUpStream(id).then(() => this.getData())
+        }
+    },
+    mounted() {
+        this.getData()
+    }
 }
 </script>
 
