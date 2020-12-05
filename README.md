@@ -14,6 +14,6 @@
 
 ## 演示
 
-<img src="https://github.com/boot-vue/pics/blob/main/1.png?raw=true" width="500" height="350"  alt=""/>
-<img src="https://github.com/boot-vue/pics/blob/main/2.png?raw=true" width="500" height="350"  alt=""/>
-<img src="https://github.com/boot-vue/pics/blob/main/3.png?raw=true" width="500" height="350"  alt=""/>
+<img src="https://github.com/boot-vue/pics/blob/main/1.png?raw=true" width="300" height="200"  alt=""/>
+<img src="https://github.com/boot-vue/pics/blob/main/2.png?raw=true" width="300" height="200"  alt=""/>
+<img src="https://github.com/boot-vue/pics/blob/main/3.png?raw=true" width="300" height="200"  alt=""/>
