@@ -23,24 +23,36 @@ export default new Router({
             name: 'index',
             component: Index
         },
-        /*{
-            path: '/',
-            name: 'base',
-            component: Base,
-            redirect: '/index',
-            children: [
-                {
-                    path: 'index',
-                    name: 'index',
-                    component: Index
-                },
-                {
-                    path: 'test',
-                    name: 'test',
-                    component: () => import(/!* webpackChunkName: "test" *!/'./views/test/Test')
-                }
-            ]
-        },*/
+        {
+            path: '/upstream',
+            name: 'upstream',
+            component: () => import(/* webpackChunkName: "test" */'./views/UpStream')
+        },
+        {
+            path: '/service',
+            name: 'service',
+            component: () => import(/* webpackChunkName: "test" */'./views/Service')
+        },
+        {
+            path: '/route',
+            name: 'route',
+            component: () => import(/* webpackChunkName: "test" */'./views/Route')
+        },
+        {
+            path: '/consumer',
+            name: 'consumer',
+            component: () => import(/* webpackChunkName: "test" */'./views/Consumer')
+        },
+        {
+            path: '/plugin',
+            name: 'plugin',
+            component: () => import(/* webpackChunkName: "test" */'./views/Plugin')
+        },
+        {
+            path: '/cert',
+            name: 'cert',
+            component: () => import(/* webpackChunkName: "test" */'./views/Cert')
+        },
         {
             path: '*',
             redirect: '/index'

@@ -7,7 +7,7 @@
                                 width="256" @breakpoint="isCollapsed">
                     <div class="logo">
                         <img alt="" src="@/assets/img/logo.svg">
-                        <h1 v-show="!collapsed" class="text">哇咔咔 ~ ~</h1>
+                        <h1 v-show="!collapsed" class="text">Kong Long</h1>
                     </div>
                     <a-menu
                         :defaultOpenKeys="['sub1']"
