@@ -1,4 +1,5 @@
 import axios from '../utils/axios'
+import _ from "lodash";
 
 export function getServices() {
     return axios.get('/services')
@@ -19,4 +20,18 @@ export function getServicesByRoute(tag) {
 
 export function getServicesByPlugin(tag) {
     return axios.get('/plugins/' + tag + '/service')
+}
+
+export function createOrUpdateService(params) {
+    params = _.pickBy(params, v => v && v !== '' && v.length > 0)
+
+    if (params.id) {
+        return axios.put('/services/' + params.id, params)
+    } else {
+        return axios.post('/services', params)
+    }
+}
+
+export function deleteService(id) {
+    return axios.delete('/services/' + id)
 }

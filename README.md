@@ -14,6 +14,16 @@
 
 ## 演示
 
-<img src="https://github.com/boot-vue/pics/blob/main/1.png?raw=true" width="500" height="350"  alt=""/>
-<img src="https://github.com/boot-vue/pics/blob/main/2.png?raw=true" width="500" height="350"  alt=""/>
-<img src="https://github.com/boot-vue/pics/blob/main/3.png?raw=true" width="500" height="350"  alt=""/>
+<table>
+    <tr>
+        <td><img src="https://github.com/boot-vue/pics/blob/main/1.png?raw=true" alt=""/></td>
+        <td><img src="https://github.com/boot-vue/pics/blob/main/2.png?raw=true" alt=""/></td>
+    </tr>
+    <tr>
+        <td><img src="https://github.com/boot-vue/pics/blob/main/3.png?raw=true" alt=""/></td>
+        <td><img src="https://github.com/boot-vue/pics/blob/main/4.png?raw=true" alt=""/></td>
+    </tr>
+    <tr>
+        <td><img src="https://github.com/boot-vue/pics/blob/main/5.png?raw=true" alt=""/></td>
+    </tr>
+</table>

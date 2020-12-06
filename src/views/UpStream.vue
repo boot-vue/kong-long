@@ -11,7 +11,7 @@
                      {{ tag }}
              </a-tag>
             </span>
-            <span slot="created_at" slot-scope="text">{{ moment.unix(text).format('lll') }}</span>
+            <span slot="created_at" slot-scope="text">{{ moment.unix(text).format('YYYY-MM-DD HH:mm:ss') }}</span>
             <div slot="expandedRowRender" slot-scope="record" style="margin: 0">
                 <a-descriptions title="Details" bordered>
                     <a-descriptions-item label="id">
@@ -48,18 +48,22 @@
                 <a-divider type="vertical"/>
                 <a-button type="danger" @click="delUpStream(record.id)">删除</a-button>
                 <a-divider type="vertical"/>
-                <a-button>Target</a-button>
+                <a-button @click="showTargetDrawer(record.id)">Target</a-button>
              </span>
         </a-table>
         <UpStreamModal :data="params" :show="showModal" :isEdit="isEdit"
                        @get-data="handleCreateUpStream" @handle-cancel="handleCancel"/>
+        <TargetDrawer :datas="targets" :show="showTarget" @add-target="addTarget" @del-target="delTarget"
+                      @on-close="handleCloseTargetDrawer"/>
     </div>
 </template>
 
 <script>
 import UpStreamModal from '../components/UpStreamModal';
 import {deleteUpStream, getUpStreams} from '@/api/upstream'
+import {addTarget, delTarget, getAllTargetByUpstream} from '@/api/target'
 import moment from 'moment'
+import TargetDrawer from "@/components/TargetDrawer";
 
 const columns = [
     {
@@ -92,13 +96,16 @@ const columns = [
 ]
 export default {
     name: "UpStream",
-    components: {UpStreamModal},
+    components: {TargetDrawer, UpStreamModal},
     data() {
         return {
             showModal: false,
             data: [],
             columns,
             isEdit: false,
+            targets: [],
+            showTarget: false,
+            id: '',
             params: {
                 id: '',
                 name: '',
@@ -139,6 +146,27 @@ export default {
         },
         delUpStream(id) {
             deleteUpStream(id).then(() => this.getData())
+        },
+        showTargetDrawer(id) {
+            this.id = id
+            getAllTargetByUpstream(id).then(res => {
+                this.targets = res.data
+                this.showTarget = true
+            })
+        },
+        handleCloseTargetDrawer() {
+            this.targets = []
+            this.showTarget = false
+        },
+        addTarget(params) {
+            addTarget(params, this.id).then(() => {
+                this.showTargetDrawer(this.id)
+            })
+        },
+        delTarget(id) {
+            delTarget(this.id, id).then(()=>{
+                this.showTargetDrawer(this.id)
+            })
         }
     },
     mounted() {
