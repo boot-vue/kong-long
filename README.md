@@ -10,6 +10,8 @@
 
 ```bash
 
+# dashboard & kong-admin-api 安全控制自己研究  不管
+
 ```
 
 ## 演示
