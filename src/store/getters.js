@@ -4,5 +4,8 @@ export default {
     },
     getServiceParams: (state) => {
         return state.servicesParams
+    },
+    getRouteParams: (state) => {
+        return state.routeParams
     }
 };

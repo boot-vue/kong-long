@@ -25,5 +25,9 @@
     </tr>
     <tr>
         <td><img src="https://github.com/boot-vue/pics/blob/main/5.png?raw=true" alt=""/></td>
+        <td><img src="https://github.com/boot-vue/pics/blob/main/6.png?raw=true" alt=""/></td>
+    </tr>
+    <tr>
+        <td><img src="https://github.com/boot-vue/pics/blob/main/7.png?raw=true" alt=""/></td>
     </tr>
 </table>
