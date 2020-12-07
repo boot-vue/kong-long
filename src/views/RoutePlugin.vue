@@ -11,6 +11,9 @@
         <RateLimiting :show_modal="pluginModal.rateLimiting"
                       @add-plugin="addPlugin"
                       @hide-modal="pluginModal.rateLimiting=false"/>
+        <Cors :show_modal="pluginModal.cors"
+              @add-plugin="addPlugin"
+              @hide-modal="pluginModal.cors=false"/>
         <a-table :columns="columns" :data-source="data" rowKey="id">
         <span slot="tags" slot-scope="tags">
             <a-tag
@@ -57,6 +60,7 @@ import {addPluginByRouteId, deletePluginByRouteId, getPluginByRouteId} from "@/a
 import PluginModal from "@/components/PluginModal";
 import RateLimiting from "@/components/plugin/RateLimiting";
 import moment from "moment";
+import Cors from "@/components/plugin/Cors";
 
 const columns = [
     {
@@ -101,7 +105,7 @@ const columns = [
 ]
 export default {
     name: "RoutePlugin",
-    components: {RateLimiting, PluginModal},
+    components: {Cors, RateLimiting, PluginModal},
     data() {
         return {
             id: '',

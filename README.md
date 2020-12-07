@@ -12,6 +12,8 @@
 
 # dashboard & kong-admin-api 安全控制自己研究  不管
 
+某些没鸡儿卵用的功能不打算实现
+
 route ['plugins']  --> service ---> upstream ['targets']
 
 针对route限流时, rate-limiting plugin 按ip限流, route配多个, 需要限流的 path 单独剔出来
