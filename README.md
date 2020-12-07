@@ -6,7 +6,13 @@
 
 [Kong admin api](https://docs.konghq.com/2.2.x/admin-api/)
 
-## 部署
+## plugins
+
+已实现的插件 <code>Rate Limiting</code>  <code>Cors</code> <code>Acme</code>  <code>Request Size Limiting</code>  <code>Request Transformer</code>
+
+<code>Basic Authentication</code> 需要`consumer` 与 `acl`的支持 以后再说
+
+## Suggest
 
 ```bash
 

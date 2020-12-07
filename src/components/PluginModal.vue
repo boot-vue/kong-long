@@ -20,22 +20,27 @@
                 <div class="item">
                     <img alt="" src="../assets/img/kong-inc_basic-auth.png">
                     <div>Basic Authentication</div>
-                    <a-button icon="plus" type="primary" @click="showPluginModal('basic-authentication')">新增插件</a-button>
+                    <a-button disabled icon="plus" type="primary" @click="showPluginModal('basic-authentication')">新增插件</a-button>
                 </div>
                 <div class="item">
                     <img alt="" src="../assets/img/kong-inc_request-transformer.png">
                     <div>Request Transformer</div>
-                    <a-button icon="plus" type="primary" @click="showPluginModal('request-transformer')">新增插件</a-button>
+                    <a-button disabled icon="plus" type="primary" @click="showPluginModal('request-transformer')">新增插件</a-button>
                 </div>
                 <div class="item">
                     <img alt="" src="../assets/img/kong-inc_request-termination.png">
                     <div>Request Termination</div>
-                    <a-button icon="plus" type="primary" @click="showPluginModal('request-termination')">新增插件</a-button>
+                    <a-button disabled icon="plus" type="primary" @click="showPluginModal('request-termination')">新增插件</a-button>
                 </div>
                 <div class="item">
                     <img alt="" src="../assets/img/kong-inc_bot-detection.png">
                     <div>Bot Detection</div>
                     <a-button icon="plus" type="primary" @click="showPluginModal('bot-detection')">新增插件</a-button>
+                </div>
+                <div class="item">
+                    <img alt="" src="../assets/img/kong-inc_request-size-limiting.png">
+                    <div>Request Size Limiting</div>
+                    <a-button icon="plus" type="primary" @click="showPluginModal('request-size-limiting')">新增插件</a-button>
                 </div>
             </div>
         </a-modal>

@@ -14,6 +14,12 @@
         <Cors :show_modal="pluginModal.cors"
               @add-plugin="addPlugin"
               @hide-modal="pluginModal.cors=false"/>
+        <BasicAuth :show_modal="pluginModal.basicAuthentication"
+                   @add-plugin="addPlugin"
+                   @hide-modal="pluginModal.basicAuthentication=false"/>
+        <RequestSizeLimit :show_modal="pluginModal.requestSizeLimit"
+                          @add-plugin="addPlugin"
+                          @hide-modal="pluginModal.requestSizeLimit=false"/>
         <a-table :columns="columns" :data-source="data" rowKey="id">
         <span slot="tags" slot-scope="tags">
             <a-tag
@@ -61,6 +67,8 @@ import PluginModal from "@/components/PluginModal";
 import RateLimiting from "@/components/plugin/RateLimiting";
 import moment from "moment";
 import Cors from "@/components/plugin/Cors";
+import BasicAuth from "@/components/plugin/BasicAuth";
+import RequestSizeLimit from "@/components/plugin/RequestSizeLimit";
 
 const columns = [
     {
@@ -105,7 +113,7 @@ const columns = [
 ]
 export default {
     name: "RoutePlugin",
-    components: {Cors, RateLimiting, PluginModal},
+    components: {RequestSizeLimit, BasicAuth, Cors, RateLimiting, PluginModal},
     data() {
         return {
             id: '',
@@ -146,6 +154,7 @@ export default {
                     requestTransformer: false,
                     requestTermination: false,
                     botDetection: false,
+                    requestSizeLimit: false
                 }
             })
         },
@@ -165,6 +174,7 @@ export default {
                         requestTransformer: false,
                         requestTermination: false,
                         botDetection: false,
+                        requestSizeLimit: false
                     }
                     break
                 case 'cors':
@@ -176,6 +186,7 @@ export default {
                         requestTransformer: false,
                         requestTermination: false,
                         botDetection: false,
+                        requestSizeLimit: false
                     }
                     break
                 case 'acme':
@@ -187,6 +198,7 @@ export default {
                         requestTransformer: false,
                         requestTermination: false,
                         botDetection: false,
+                        requestSizeLimit: false
                     }
                     break
                 case 'basic-authentication':
@@ -198,6 +210,7 @@ export default {
                         requestTransformer: false,
                         requestTermination: false,
                         botDetection: false,
+                        requestSizeLimit: false
                     }
                     break
                 case 'request-transformer':
@@ -209,6 +222,7 @@ export default {
                         requestTransformer: true,
                         requestTermination: false,
                         botDetection: false,
+                        requestSizeLimit: false
                     }
                     break
                 case 'request-termination':
@@ -220,6 +234,7 @@ export default {
                         requestTransformer: false,
                         requestTermination: true,
                         botDetection: false,
+                        requestSizeLimit: false
                     }
                     break
                 case 'bot-detection':
@@ -231,6 +246,19 @@ export default {
                         requestTransformer: false,
                         requestTermination: false,
                         botDetection: true,
+                        requestSizeLimit: false
+                    }
+                    break
+                case 'request-size-limiting':
+                    this.pluginModal = {
+                        rateLimiting: false,
+                        cors: false,
+                        acme: false,
+                        basicAuthentication: false,
+                        requestTransformer: false,
+                        requestTermination: false,
+                        botDetection: false,
+                        requestSizeLimit: true
                     }
                     break
             }
