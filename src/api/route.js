@@ -1,5 +1,5 @@
 import axios from '../utils/axios'
-import _ from "lodash";
+import {objectFilter} from "@/utils/objectFilter";
 
 export function getRoutes() {
     return axios.get('/routes')
@@ -18,7 +18,7 @@ export function getRoutesByPlugin(tag) {
 }
 
 export function createOrUpdateRoute(params) {
-    params = _.pickBy(params, v => v && v !== '' && v.length > 0)
+    params = objectFilter(params)
     params.protocols = params.protocols.toString().split(',')
     params.methods = params.methods.toString().split(',')
     params.hosts = params.hosts.toString().split(',')

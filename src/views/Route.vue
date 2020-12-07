@@ -1,6 +1,6 @@
 <template>
     <div class="route">
-        <a-button type="primary" icon="plus" @click="showRouteModal" style="margin-bottom: 20px">新增Route</a-button>
+        <a-button icon="plus" style="margin-bottom: 20px" type="primary" @click="showRouteModal">新增Route</a-button>
         <a-table :columns="columns" :data-source="getRouteParams.datas" rowKey="id">
             <span slot="hosts" slot-scope="hosts">
              <a-tag
@@ -49,7 +49,7 @@
             </span>
             <span slot="created_at" slot-scope="text">{{ moment.unix(text).format('YYYY-MM-DD HH:mm:ss') }}</span>
             <div slot="expandedRowRender" slot-scope="record" style="margin: 0">
-                <a-descriptions title="Details" bordered>
+                <a-descriptions bordered title="Details">
                     <a-descriptions-item label="id">
                         {{ record.id }}
                     </a-descriptions-item>
@@ -60,13 +60,13 @@
                         {{ record.read_timeout }}
                     </a-descriptions-item>
                     <a-descriptions-item label="snis">
-                        {{ record.snis || 'null' }}
+                        {{ record.snis }}
                     </a-descriptions-item>
                     <a-descriptions-item label="sources">
-                        {{ record.sources || 'null' }}
+                        {{ record.sources }}
                     </a-descriptions-item>
                     <a-descriptions-item label="strip_path">
-                        {{ record.tls_verify || 'strip_path' }}
+                        {{ record.strip_path }}
                     </a-descriptions-item>
                     <a-descriptions-item label="request_buffering">
                         {{ record.request_buffering }}
@@ -87,10 +87,10 @@
                         {{ record.https_redirect_status_code }}
                     </a-descriptions-item>
                     <a-descriptions-item label="headers">
-                        {{ record.headers || 'null' }}
+                        {{ record.headers }}
                     </a-descriptions-item>
                     <a-descriptions-item label="destinations">
-                        {{ record.destinations || 'null' }}
+                        {{ record.destinations }}
                     </a-descriptions-item>
                 </a-descriptions>
             </div>
@@ -99,6 +99,7 @@
                 <a-divider type="vertical"/>
                 <a-button type="danger" @click="delRoute(record.id)">删除</a-button>
                 <a-divider type="vertical"/>
+                <a-button @click="showRoutePlugin(record)">Plugins</a-button>
              </span>
         </a-table>
         <RouteModal @get-data="getData"/>
@@ -184,6 +185,9 @@ export default {
             deleteRoute(id).then(() => {
                 this.getData()
             })
+        },
+        showRoutePlugin(r) {
+            this.$router.push({name: 'route-plugin', query: {id: r.id}})
         }
     },
     mounted() {

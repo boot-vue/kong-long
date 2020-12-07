@@ -31,5 +31,10 @@
     </tr>
     <tr>
         <td><img src="https://github.com/boot-vue/pics/blob/main/7.png?raw=true" alt=""/></td>
+        <td><img src="https://github.com/boot-vue/pics/blob/main/8.png?raw=true" alt=""/></td>
+    </tr>
+    <tr>
+        <td><img src="https://github.com/boot-vue/pics/blob/main/9.png?raw=true" alt=""/></td>
+        <td><img src="https://github.com/boot-vue/pics/blob/main/10.png?raw=true" alt=""/></td>
     </tr>
 </table>

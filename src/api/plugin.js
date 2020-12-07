@@ -1,4 +1,5 @@
 import axios from '../utils/axios'
+import {objectFilter} from "@/utils/objectFilter";
 
 //  已经启用的插件
 export function getPlugins() {
@@ -33,4 +34,16 @@ export function getPluginDetail(id) {
 // 插件schema
 export function getPluginsSchema(name) {
     return axios.get('/plugins/schema/' + name)
+}
+
+
+export function deletePluginByRouteId(routeId, pluginId) {
+    return axios.delete('/routes/' + routeId + "/plugins/" + pluginId)
+}
+
+//  ***************************************  kong 插件 api   **************************
+
+export function addPluginByRouteId(id, params) {
+    params = objectFilter(params)
+    return axios.post('/routes/' + id + '/plugins', params)
 }

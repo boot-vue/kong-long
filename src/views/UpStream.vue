@@ -1,6 +1,6 @@
 <template>
     <div class="upstream">
-        <a-button type="primary" icon="plus" @click="showUpStreamModal" style="margin-bottom: 20px">新增UpStream</a-button>
+        <a-button icon="plus" style="margin-bottom: 20px" type="primary" @click="showUpStreamModal">新增UpStream</a-button>
         <a-table :columns="columns" :data-source="data" rowKey="id">
             <span slot="tags" slot-scope="tags">
              <a-tag
@@ -13,7 +13,7 @@
             </span>
             <span slot="created_at" slot-scope="text">{{ moment.unix(text).format('YYYY-MM-DD HH:mm:ss') }}</span>
             <div slot="expandedRowRender" slot-scope="record" style="margin: 0">
-                <a-descriptions title="Details" bordered>
+                <a-descriptions bordered title="Details">
                     <a-descriptions-item label="id">
                         {{ record.id }}
                     </a-descriptions-item>
@@ -24,22 +24,22 @@
                         {{ record.hash_fallback }}
                     </a-descriptions-item>
                     <a-descriptions-item label="hash_on_header">
-                        {{ record.hash_on_header || 'null' }}
+                        {{ record.hash_on_header }}
                     </a-descriptions-item>
                     <a-descriptions-item label="hash_on_cookie_path">
                         {{ record.hash_on_cookie_path }}
                     </a-descriptions-item>
                     <a-descriptions-item label="hash_on_cookie">
-                        {{ record.hash_on_cookie || 'null' }}
+                        {{ record.hash_on_cookie }}
                     </a-descriptions-item>
                     <a-descriptions-item label="host_header">
-                        {{ record.host_header || 'null' }}
+                        {{ record.host_header }}
                     </a-descriptions-item>
                     <a-descriptions-item label="slots">
                         {{ record.slots }}
                     </a-descriptions-item>
                     <a-descriptions-item label="hash_fallback_header">
-                        {{ record.hash_fallback_header || 'null' }}
+                        {{ record.hash_fallback_header }}
                     </a-descriptions-item>
                 </a-descriptions>
             </div>
@@ -51,7 +51,7 @@
                 <a-button @click="showTargetDrawer(record.id)">Target</a-button>
              </span>
         </a-table>
-        <UpStreamModal :data="params" :show="showModal" :isEdit="isEdit"
+        <UpStreamModal :data="params" :isEdit="isEdit" :show="showModal"
                        @get-data="handleCreateUpStream" @handle-cancel="handleCancel"/>
         <TargetDrawer :datas="targets" :show="showTarget" @add-target="addTarget" @del-target="delTarget"
                       @on-close="handleCloseTargetDrawer"/>
@@ -164,7 +164,7 @@ export default {
             })
         },
         delTarget(id) {
-            delTarget(this.id, id).then(()=>{
+            delTarget(this.id, id).then(() => {
                 this.showTargetDrawer(this.id)
             })
         }

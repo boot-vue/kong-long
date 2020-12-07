@@ -1,6 +1,6 @@
 <template>
     <div class="service">
-        <a-button type="primary" icon="plus" @click="showServiceModal" style="margin-bottom: 20px">新增Service</a-button>
+        <a-button icon="plus" style="margin-bottom: 20px" type="primary" @click="showServiceModal">新增Service</a-button>
         <a-table :columns="columns" :data-source="getServiceParams.datas" rowKey="id">
             <span slot="tags" slot-scope="tags">
              <a-tag
@@ -13,7 +13,7 @@
             </span>
             <span slot="created_at" slot-scope="text">{{ moment.unix(text).format('YYYY-MM-DD HH:mm:ss') }}</span>
             <div slot="expandedRowRender" slot-scope="record" style="margin: 0">
-                <a-descriptions title="Details" bordered>
+                <a-descriptions bordered title="Details">
                     <a-descriptions-item label="id">
                         {{ record.id }}
                     </a-descriptions-item>
@@ -30,16 +30,16 @@
                         {{ record.retries }}
                     </a-descriptions-item>
                     <a-descriptions-item label="tls_verify">
-                        {{ record.tls_verify || 'null' }}
+                        {{ record.tls_verify }}
                     </a-descriptions-item>
                     <a-descriptions-item label="tls_verify_depth">
-                        {{ record.tls_verify_depth || 'null' }}
+                        {{ record.tls_verify_depth }}
                     </a-descriptions-item>
                     <a-descriptions-item label="ca_certificates">
-                        {{ record.ca_certificates || 'null' }}
+                        {{ record.ca_certificates }}
                     </a-descriptions-item>
                     <a-descriptions-item label="client_certificate">
-                        {{ record.client_certificate || 'null' }}
+                        {{ record.client_certificate }}
                     </a-descriptions-item>
                 </a-descriptions>
             </div>

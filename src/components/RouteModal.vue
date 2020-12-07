@@ -1,30 +1,30 @@
 <template>
     <div class="route-modal">
-        <a-modal v-model="getRouteParams.visible" title="Route"
-                 @ok="handleOk" @cancel="handleCancel"
-                 :width="850">
+        <a-modal v-model="getRouteParams.visible" :width="850"
+                 title="Route" @cancel="handleCancel"
+                 @ok="handleOk">
             <a-form :form="form" :label-col="{ span: 5 }" :wrapper-col="{ span: 12,offset:2 }">
                 <a-form-item label="Id">
-                    <a-input disabled=""
-                             v-decorator="['id', { initialValue:getRouteParams.id }]"
+                    <a-input v-decorator="['id', { initialValue:getRouteParams.id }]"
+                             disabled=""
                     />
                 </a-form-item>
                 <a-form-item label="Name">
-                    <a-input placeholder="route名称"
-                             v-decorator="['name', { rules: [{ required: true, message: 'Please input route name!' }] ,
+                    <a-input v-decorator="['name', { rules: [{ required: true, message: 'Please input route name!' }] ,
                         initialValue:getRouteParams.name }]"
+                             placeholder="route名称"
                     />
                 </a-form-item>
                 <a-form-item label="protocols">
-                    <a-input placeholder=",分割"
-                             v-decorator="['protocols', { rules: [{ required: true, message: '必填' }] ,
+                    <a-input v-decorator="['protocols', { rules: [{ required: true, message: '必填' }] ,
                         initialValue:getRouteParams.protocols.join(',') }]"
+                             placeholder=",分割"
                     />
                 </a-form-item>
                 <a-form-item label="methods">
-                    <a-input placeholder=",分割"
-                             v-decorator="['methods', { rules: [{ required: true, message: '必填' }] ,
+                    <a-input v-decorator="['methods', { rules: [{ required: true, message: '必填' }] ,
                         initialValue:getRouteParams.methods.join(',') }]"
+                             placeholder=",分割"
                     />
                 </a-form-item>
                 <a-form-item label="service">
@@ -36,19 +36,19 @@
                     </a-select>
                 </a-form-item>
                 <a-form-item label="hosts">
-                    <a-input placeholder=",分割 绑定的域名或ip"
-                             v-decorator="['hosts', { rules: [{ required: true, message: '必填' }] ,
+                    <a-input v-decorator="['hosts', { rules: [{ required: true, message: '必填' }] ,
                         initialValue:getRouteParams.hosts.join(',') }]"
+                             placeholder=",分割 绑定的域名或ip"
                     />
                 </a-form-item>
                 <a-form-item label="paths">
-                    <a-input placeholder=",分割"
-                             v-decorator="['paths', {initialValue:getRouteParams.paths.join(',') }]"
+                    <a-input v-decorator="['paths', {initialValue:getRouteParams.paths.join(',') }]"
+                             placeholder=",分割"
                     />
                 </a-form-item>
                 <a-form-item label="https_redirect_status_code">
-                    <a-input placeholder="重定向响应码  426, 301, 302, 307, 308"
-                             v-decorator="['https_redirect_status_code', {initialValue:getRouteParams.https_redirect_status_code}]"
+                    <a-input v-decorator="['https_redirect_status_code', {initialValue:getRouteParams.https_redirect_status_code}]"
+                             placeholder="重定向响应码  426, 301, 302, 307, 308"
                     />
                 </a-form-item>
                 <a-form-item label="strip_path">

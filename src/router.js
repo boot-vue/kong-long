@@ -39,6 +39,11 @@ export default new Router({
             component: () => import(/* webpackChunkName: "route" */'./views/Route')
         },
         {
+            path: '/route-plugin',
+            name: 'route-plugin',
+            component: () => import(/* webpackChunkName: "route-plugin" */'./views/RoutePlugin')
+        },
+        {
             path: '/consumer',
             name: 'consumer',
             component: () => import(/* webpackChunkName: "consumer" */'./views/Consumer')
